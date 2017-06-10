@@ -39,5 +39,19 @@ def reindex(analysisSettings = {}, mappingSettings = {}, movieData = {}):
 
 if __name__ == "__main__":
     movieData = extract()
-    reindex(movieData = movieData)
+    mappings = {
+        "movie": {
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "analyzer": "english"
+                },
+                "overview": {
+                    "type": "text",
+                    "analyzer": "english"
+                }
+            }
+        }
+    }
+    reindex(movieData = movieData, mappingSettings = mappings)
 
